@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +8,30 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor(private alertController: AlertController) {}
+
+  async exibirAlerta() {
+    const alert = await this.alertController.create({
+      header: 'Deseja realmente favoritar o filme ?',
+      cssClass: 'custom-alert',
+      buttons: [
+        {
+          text: 'Não',
+          cssClass: 'alert-button-cancel',
+        },
+        {
+          text: 'Sim',
+          cssClass: 'alert-button-confirm',
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
 
 }
+
+
+
+
